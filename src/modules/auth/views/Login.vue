@@ -105,6 +105,9 @@ export default {
         }
     }
   },
+  mounted(){
+      this.$store.dispatch("logout")
+  },
   computed: {
       texts() {
           return this.isLogin
