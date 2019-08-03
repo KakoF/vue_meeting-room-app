@@ -4,7 +4,8 @@ import Vue from 'vue';
 import axios from "axios";
 
 // Full config:  https://github.com/axios/axios#request-config
-axios.defaults.baseURL = 'http://localhost:5001/api/';
+axios.defaults.baseURL = 'https://localhost:44328/api/';
+
 // axios.defaults.withCredentials = false;
 // axios.defaults.responseEncoding = 'utf8'
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';

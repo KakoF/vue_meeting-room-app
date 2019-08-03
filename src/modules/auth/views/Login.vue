@@ -151,12 +151,12 @@ export default {
 	        "senha": this.user.password
         }
         try {
-            await new Promise(resolve => setTimeout(resolve, 3000))
+            //await new Promise(resolve => setTimeout(resolve, 3000))
             const authData = this.isLogin
             ? await Auth.login(data)
             : await Auth.signup(data)
-            Auth.setUser(authData.data)
-            this.$router.push(this.$route.query.redirect || '/dashboard')
+            Auth.registerUser(authData.data)
+            // this.$router.push(this.$route.query.redirect || '/dashboard')
         } catch (error) {
             this.error = 'Erro em realizar a autenticação'
             this.showSnackbar = true
