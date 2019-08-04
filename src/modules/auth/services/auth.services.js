@@ -23,25 +23,12 @@ export default {
     .then(response=>{
       const token = response.data.token
       store.dispatch("login", { user, token })
-
     }).catch(error => {
-
+      store.dispatch("logout")
     })
-
-
-    
-    //window.localStorage.setItem('AUTH_TOKEN', token)
-    //store.commit('SET_TOKEN', data.token)
-    //store.commit('SET_NAME', data.nome)
-    //store.commit('SET_ID', data.id)
-    //this.requestToken(data)
   },
   getToken: function() {
     return store.state.token
-  },
-  /*getUser: function() {
-    console.log(store.state)
-}*/
-
+  }
 }
 

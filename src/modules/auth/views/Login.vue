@@ -106,7 +106,7 @@ export default {
     }
   },
   mounted(){
-      this.$store.dispatch("logout")
+      // let redirect = this.$store.dispatch("checkToken")
   },
   computed: {
       texts() {
@@ -154,12 +154,12 @@ export default {
 	        "senha": this.user.password
         }
         try {
-            //await new Promise(resolve => setTimeout(resolve, 3000))
+            await new Promise(resolve => setTimeout(resolve, 2000))
             const authData = this.isLogin
             ? await Auth.login(data)
             : await Auth.signup(data)
             Auth.registerUser(authData.data)
-            // this.$router.push(this.$route.query.redirect || '/dashboard')
+            this.$router.push('/dashboard')
         } catch (error) {
             this.error = 'Erro em realizar a autenticação'
             this.showSnackbar = true
