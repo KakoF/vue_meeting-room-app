@@ -99,7 +99,7 @@ export default {
   data: () => ({
     items: [
       { title: 'Home', icon: 'dashboard', url: '/dashboard', exact: true },
-      { title: 'Sala', icon: 'list', url: 'dashboard/Sala' , exact: false }
+      { title: 'Sala', icon: 'list', url: 'dashboard/Sala' , exact: true }
     ],
     mini: false,
   })
