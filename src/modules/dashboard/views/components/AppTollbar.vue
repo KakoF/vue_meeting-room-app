@@ -1,12 +1,32 @@
 <template>
+
+
+
+
+
+
+
   <v-toolbar
     dark
     prominent
     src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
   >
-    <v-app-bar-nav-icon @click.stop="$emit('hide', !show)"></v-app-bar-nav-icon>
     <v-toolbar-title>Agendamentos de Salas - Vuetify</v-toolbar-title>
-    <v-spacer></v-spacer>
+    <template v-slot:extension>
+              <v-btn
+              @click="logout"
+                class="mx-2"
+                color="red"
+                dark
+                large
+                absolute
+                bottom
+                right
+                fab
+              >
+                <v-icon>power_off</v-icon>
+              </v-btn>
+            </template>
   </v-toolbar>
 </template>
 
@@ -20,6 +40,14 @@ export default {
   model: {
     prop: 'show',
     event: 'hide',
+  },
+  methods:{
+    logout: function() {
+      this.$store.dispatch("logout").then(() => {
+      this.$router.push("/login");
+      });
+    }
   }
+  
 }
 </script>

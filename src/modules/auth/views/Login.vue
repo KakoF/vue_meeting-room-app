@@ -154,11 +154,11 @@ export default {
 	        "senha": this.user.password
         }
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000))
+            await new Promise(resolve => setTimeout(resolve, 1000))
             const authData = this.isLogin
             ? await Auth.login(data)
             : await Auth.signup(data)
-            Auth.registerUser(authData.data)
+            let loginIn = await Auth.registerUser(authData.data)
             this.$router.push('/dashboard')
         } catch (error) {
             this.error = 'Erro em realizar a autenticação'

@@ -1,6 +1,7 @@
 <template>
 <div>
   <v-flex>
+    
           <v-card
             color="#757575"
           >
@@ -10,10 +11,11 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-               <v-btn class="mx-2" fab dark color="indigo">
+               <v-btn @click="handleNewMeeting" class="mx-2" fab dark color="indigo">
             <v-icon dark>add</v-icon>
             </v-btn>
             </v-card-actions>
+            
           </v-card>
         </v-flex>
 <v-data-table
@@ -44,7 +46,7 @@ import Agendamento from '@/api/agendamento'
         headers: [
           { text: 'Id', value: 'id' },
           { text: 'Título', value: 'titulo' },
-          { text: 'Sala', value: 'sala_id' },
+          { text: 'Sala', value: 'sala_Id' },
           { text: 'Periodo', value: 'periodo' },
         ],
       }
@@ -56,15 +58,14 @@ import Agendamento from '@/api/agendamento'
     async list() {
       Agendamento.list()
         .then(response => {
-          console.log(response.data)
           this.data = response.data
         })
         .catch(error => {
-          console.log(error)
+         
         })
     },
     handleNewMeeting() {
-      this.$router.push('new')
+      this.$router.push('dashboard/novo')
     },
   }
 };

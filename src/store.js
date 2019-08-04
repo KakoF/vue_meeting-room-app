@@ -4,7 +4,6 @@ import { stat } from 'fs';
 
 Vue.use(Vuex)
 
-const SET_TOKEN = 'SET_TOKEN'
 const store = new Vuex.Store({
 //export default new Vuex.Store({
   state: {
@@ -37,18 +36,26 @@ const store = new Vuex.Store({
   },
   actions: {
     login({ commit }, user) {
-      return new Promise((resolve, reject) => {
-        commit('auth_request')
-        localStorage.setItem('token', user.token)
-        localStorage.setItem('user_id', user.user.id)
-        axios.defaults.headers.common['Authorization'] = user.token
-        commit('auth_success', {token: user.token, usuario: user.user})
-        resolve()
-      })
+      var promise = new Promise((resolve, reject) => {
+        if (user.user.id && user.token) {
+          commit('auth_request')
+          localStorage.setItem('token', user.token)
+          localStorage.setItem('user_id', user.user.id)
+          axios.defaults.headers.common['Authorization'] = user.token
+          commit('auth_success', {token: user.token, usuario: user.user})
+        }
+        else {
+          commit('auth_error')
+          localStorage.removeItem('user_id',)
+          localStorage.removeItem('token')
+          reject(Error())
+        }
+      });
     },
     logout({ commit }) {
       return new Promise((resolve, reject) => {
         commit('logout')
+        localStorage.removeItem('user_id',)
         localStorage.removeItem('token')
         delete axios.defaults.headers.common['Authorization']
         resolve()
