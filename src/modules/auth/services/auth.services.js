@@ -12,7 +12,6 @@ export default {
     const token = axios.post('token', data)
   },
   signup: (data) => {
-    console.log(data)
   return axios.post('signup', data)
   },
   setToken: function(token) {
