@@ -1,26 +1,31 @@
 <template>
 <div>
-  <v-card>
-  <v-card-title class="primary white--text headline">
-      Salas
-    </v-card-title>
-     <v-card-text>Todas as salas cadastradas para agendamento
-    <div class="text-center">
-  </div>
-     </v-card-text>
-    </v-card>
-  <v-data-table
+    <v-flex>
+          <v-card
+            color="#757575"
+          >
+            <v-card-text class="white--text">
+              <div class="headline mb-2">Lista de Salas</div>
+              Todos os salas disponíveis
+            </v-card-text>
+          </v-card>
+        </v-flex>
+<v-data-table
     class="table"
+    no-results-text="'Nenu'"
     :headers="headers"
     :items="data"
-    :rows-per-page-items="[10, 25]">
+    :footer-props="{
+      itemsPerPageText: '',
+    }">
     <template slot="items" slot-scope="props">
-      <td class="text-xs-left">{{ props.item.id }}</td>
+     <td class="text-xs-left">{{ props.item.id }}</td>
        <td class="text-xs-left">{{ props.item.nome }}</td>
     </template>
   </v-data-table>
   </div>
 </template>
+
 
 <script>
 import Salas from '@/api/sala'
@@ -42,7 +47,6 @@ import Salas from '@/api/sala'
       console.log('entrou')
       Salas.list()
         .then(response => {
-          console.log(response.data)
           this.data = response.data
         })
         .catch(error => {
