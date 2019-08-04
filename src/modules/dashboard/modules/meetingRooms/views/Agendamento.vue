@@ -35,8 +35,6 @@
   </v-data-table>
 </div>
 </template>
-
-
 <script>
 import Agendamento from '@/api/agendamento'
   export default {

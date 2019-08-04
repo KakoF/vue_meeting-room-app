@@ -44,7 +44,6 @@ import Salas from '@/api/sala'
   },
   methods:{
     async list() {
-      console.log('entrou')
       Salas.list()
         .then(response => {
           this.data = response.data

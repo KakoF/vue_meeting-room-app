@@ -2,11 +2,11 @@
 <div>
 <template>
   <v-snackbar v-model="showSnackbar" top>
-               {{ error }}
-               <v-btn color="pink" icon @click="showSnackbar = false">
-                   <v-icon>close</v-icon>
-               </v-btn>
-           </v-snackbar>
+    {{ error }}
+    <v-btn color="pink" icon @click="showSnackbar = false">
+      <v-icon>close</v-icon>
+    </v-btn>
+  </v-snackbar>
   <v-form
     ref="form"
     lazy-validation
@@ -20,7 +20,7 @@
     <br>
     <v-text-field
       v-model="agendamento.titulo"
-      :counter="10"
+      required
       label="Título"
       type="text"
     ></v-text-field>
@@ -126,7 +126,11 @@ import { required } from 'vuelidate/lib/validators'
          this.$router.push('/dashboard')
         })
         .catch(error => {
-           this.error = 'Sala já está reservada'
+          if(!data.titulo || !data.sala_id){
+            this.error = 'Verifique todos os valores preenchidos'
+          }else{
+            this.error = 'Sala já está reservada'
+          }
             this.showSnackbar = true
         })
     }

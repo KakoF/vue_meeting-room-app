@@ -4,7 +4,7 @@ import Vue from 'vue';
 import axios from "axios";
 import store from '@/store'
 // Full config:  https://github.com/axios/axios#request-config
-axios.defaults.baseURL = 'https://localhost:44328/api/';
+axios.defaults.baseURL = 'http://localhost:5001/api/';
 axios.defaults.headers.common = {'Authorization': `bearer ${store.state.token}`}
 // axios.defaults.withCredentials = false;
 // axios.defaults.responseEncoding = 'utf8'
