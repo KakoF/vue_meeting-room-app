@@ -1,7 +1,14 @@
 <template>
 <div>
-  <app-tollbar/>
-  <app-menu :user="user"/>
+  <app-tollbar v-model="drawer"/>
+  <app-menu :user="user" v-model="drawer"/>
+   <v-container grid-list-md>
+      <v-layout>
+          <v-flex xs12>
+              <slot />
+          </v-flex>
+      </v-layout>
+  </v-container>
 </div>
 </template>
 
@@ -16,7 +23,8 @@ export default {
     AppMenu
   },
   data: () => ({
-     user: {}
+    drawer: false,
+    user: {}
   }),
   async created() {
       let data = await Usuario.get()

@@ -4,6 +4,7 @@
     prominent
     src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
   >
+    <v-app-bar-nav-icon @click.stop="$emit('hide', !show)"></v-app-bar-nav-icon>
     <v-toolbar-title>Agendamentos de Salas - Vuetify</v-toolbar-title>
     <v-spacer></v-spacer>
   </v-toolbar>
