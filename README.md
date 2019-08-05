@@ -1,5 +1,7 @@
 # meeting-room-app
 
+## Precisa ter o npm instalado para execução do projeto local
+
 ## Project setup
 ```
 npm install
